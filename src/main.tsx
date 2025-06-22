@@ -27,7 +27,9 @@ function Emissions() {
           <tr key={y}>
             <th>{y}</th>
             {oilFields.map((name) => (
-              <td>{JSON.stringify(data[name][y.toString()]?.emission)}</td>
+              <td key={`${name}-${y}`}>
+                {JSON.stringify(data[name][y.toString()]?.emission)}
+              </td>
             ))}
           </tr>
         ))}
@@ -61,7 +63,9 @@ function GasProduction() {
           <tr key={y}>
             <th>{y}</th>
             {oilFields.map((name) => (
-              <td>{JSON.stringify(data[name][y.toString()]?.productionGas)}</td>
+              <td key={`${name}-${y}`}>
+                {JSON.stringify(data[name][y.toString()]?.productionGas)}
+              </td>
             ))}
           </tr>
         ))}
@@ -94,7 +98,9 @@ function OilProduction() {
           <tr key={y}>
             <th>{y}</th>
             {oilFields.map((name) => (
-              <td>{JSON.stringify(data[name][y.toString()]?.productionOil)}</td>
+              <td key={`${name}-${y}`}>
+                {JSON.stringify(data[name][y.toString()]?.productionOil)}
+              </td>
             ))}
           </tr>
         ))}
