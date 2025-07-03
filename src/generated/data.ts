@@ -1,3 +1,41 @@
+export interface YearData {
+  productionOil?: number;
+  productionGas?: number;
+  emission?: number;
+}
+
+export interface LocationData {
+  name: string;
+  coordinates: [number, Number];
+  years: Record<string, YearData>;
+}
+
+export const locationsData: LocationData[] = [
+  {
+    name: "Aasta Hansteen",
+    coordinates: [4.8, 67.5], // Example coordinates, replace with actual ones
+    years: {
+      "2018": { emission: 72504 },
+      "2019": { productionOil: 0.17, emission: 177647 },
+      "2020": { productionOil: 0.19, emission: 192208 },
+      "2021": { productionOil: 0.17, emission: 191437 },
+      "2022": { productionOil: 0.19, emission: 192895 },
+    },
+  },
+  {
+    name: "Alvheim",
+    coordinates: [2.8, 58.5], // Example coordinates, replace with actual ones
+    years: {
+      "2009": { productionOil: 6.55 },
+      "2010": { productionOil: 7.18 },
+      "2011": { productionOil: 7.47 },
+      "2012": { productionOil: 7.78, emission: 190505 },
+      // Add more years as needed
+    },
+  },
+  // Add more locations as needed
+];
+
 export const data: Record<
   string,
   Record<

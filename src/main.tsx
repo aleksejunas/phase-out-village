@@ -1,6 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { data } from "./generated/data";
+import OpenLayersMap from "./components/ol/OpenLayersMap";
 
 function Emissions() {
   const oilFields = Object.keys(data);
@@ -13,28 +14,30 @@ function Emissions() {
   }
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Year</th>
-          {oilFields.map((name) => (
-            <th key={name}>{name}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {[...years].toSorted().map((y) => (
-          <tr key={y}>
-            <th>{y}</th>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>Year</th>
             {oilFields.map((name) => (
-              <td key={`${name}-${y}`}>
-                {JSON.stringify(data[name][y.toString()]?.emission)}
-              </td>
+              <th key={name}>{name}</th>
             ))}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {[...years].toSorted().map((y) => (
+            <tr key={y}>
+              <th>{y}</th>
+              {oilFields.map((name) => (
+                <td key={`${name}-${y}`}>
+                  {JSON.stringify(data[name][y.toString()]?.emission)}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
@@ -130,6 +133,7 @@ function Application() {
         <summary>Utslipp</summary>
         <Emissions />
       </details>
+      <OpenLayersMap />
     </>
   );
 }
